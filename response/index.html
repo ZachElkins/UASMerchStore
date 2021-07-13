@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Form to confirm orders to respond to tickets">
+  <meta name="author" content="Zachary Elkins">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/icons/apple-touch-icon.ico">
+  <link rel="icon" type="image/ico" sizes="32x32" href="../images/icons/favicon-32x32.ico">
+  <link rel="icon" type="image/ico" sizes="16x16" href="../images/icons/favicon-16x16.ico">
+  <link rel="manifest" href="../images/icons/manifest.json">
+  <link rel="mask-icon" href="../images/icons/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../JS/autofill-email.js"></script>
+  <title>UAS | Store | Response</title>
+</head>
+<style>
+#main {
+  font-size: 15px;
+  color: #2f2f2f;
+}
+body {
+  background-color: #dfdfdf;
+  font-family: Ubuntu, sans-serif;
+}
+h1 {
+  text-decoration: underline;
+}
+
+input[type="text"] {
+  border: 0.5px solid rgb(136, 136, 136);
+  width: 160px;
+  height: 18px;
+}
+select, 
+input[type="radio"],
+input[type="submit"],
+input[type="checkbox"] {
+  cursor: pointer;
+  cursor: hand;
+}
+</style>
+
+<body>
+  <form id="main" method="post" action="response-mailer.php" onsubmit="javscript:alert('Your response has been sent.')">
+    <h1>Order Confirmation / Ticket Response Form</h1>
+    <h2 style="font-size: 25px"><u>Recipient Info</u></h2>
+    Name: <input id="name" name="name" type="text" required>
+    Email: <input id="email" name="email" type="text" required>
+    <br>
+    <br><div style='border-bottom: 1px solid black'></div><br>
+
+    <input name="response" value="order" type="radio" required>Order Confirmation<br><br>
+    
+    Your order of <input name="qty" type="number" min="0" step="1" style="width:3em"> items
+    totaling $<input name="price" type="number" min="0" step="0.01" style="width:5em"> has been received.<br>
+    Any changes to your order must be submitted through a <a href="#ticket">ticket</a>.<br>
+    Tickets will only be valid if submitted before the next wave of orders are placed.<br>
+    Your order will be placed on approximately <input name="date" type="date" style="width: 10em">(sends as: yyyy-mm-dd).<br>
+    
+    <br>Additional Notes
+    <br><i style="font-size: 12px;">Use this section if the prices have changed, something is out of stock, etc.</i><br>
+
+    <textarea name="notes" rows="10" cols="80"></textarea><br>
+    
+    <br><br><div style='border-bottom: 1px solid black'></div><br>
+
+    <input name="response" value="ticket" type="radio">Ticket Response<br><br>
+    
+    Your ticket has been processed <input name="suc" value="successfully" type="radio">successfully<input name="suc" value="unsuccessfully" type="radio">unsuccessfully<br>
+    <br><i style="font-size: 12px;">Please provide details below</i><br>
+    <textarea name="details" rows="10" cols="80"></textarea><br>
+    <input type="checkbox" name="apology"> We apologize for any inconvenience.
+
+    <br><br><div style='border-bottom: 1px solid black'></div><br>
+
+    <input type="submit" name="submit" value="send">
+  </form>
+</body>
+</html>

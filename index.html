@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="Store to buy USA swag">
+  <meta name="author" content="Zachary Elkins">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.ico">
+  <link rel="icon" type="image/ico" sizes="32x32" href="images/icons/favicon-32x32.ico">
+  <link rel="icon" type="image/ico" sizes="16x16" href="images/icons/favicon-16x16.ico">
+  <link rel="manifest" href="images/icons/manifest.json">
+  <link rel="mask-icon" href="images/icons/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="theme-color" content="#ffffff">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="CSS/store.css">
+  <link rel="stylesheet" type="text/css" href="CSS/colorbox.css">
+  <script type="text/javascript" src="JS/jquery.colorbox-min.js"></script>
+  <script type="text/javascript" src="JS/store.js"></script>
+  <script type="text/javascript" src="JS/item-data.js"></script>
+  <script type="text/javascript" src="JS/autofill-email.js"></script>
+  <title>UAS | Store</title>
+</head>
+<body id="body">
+  <div id="floatingCart" style="display: none">
+    <nav>
+      <br>
+      <button id="to-cart" onclick="location.href='#cart'">
+      <span>Go To Cart</span>
+      <br>
+      <span>Total:</span>
+      <br>
+      <span id="floatingPrice"></span>
+      </button>
+    </nav>
+  </div>
+
+  <h1 class="mainHeader">ST<img src="images/logos/logo_uas_small.png" width="90em" style="margin-bottom: 25px;">RE</h1>
+  <h2 class="secondaryHeader">$2 of every item purchased will be donated to a UAS supported charity</h2>
+  <br>
+  <div id="showItems">
+  </div>
+  <p></p>
+  <form id="checkoutForm" style="display: none" method="post" action="store-mailer.php" onsubmit="javascript:if(checkRequiredFields()){alert('Your order has been made.\nYou will be redirected to the intranet.')}">
+    <div id="showCart">
+      <table id="cart">
+        <caption>Cart</caption>
+        <tr>
+          <th style="width: 26%">Name</th>
+          <th style="width: 16%">Size</th>
+          <th style="width: 16%">Quantity</th>
+          <th style="width: 16%px">Price</th>
+          <th style="width: 26%"></th>
+        </tr>
+        <tbody name="cartItems" id="cartItems">
+        </tbody>
+        <tr id="totals">
+          <td colspan="5">
+            <div name="totalItems" id="totalItems" style="float: left;  width: 50%" border-right: 2px solid gray;>Total Items: 0</div>
+            <div name="totalPrice" id="totalPrice" style="float: right; width: 50%">Total Price: $0.00</div>
+	  </td>
+        </tr
+        <tr>
+          <td colspan="5">
+            <input name="name" id="name" class="checkoutForm" onfocus="inputFocus(this)" onblur="inputBlur(this)" value="Name" type="text" required/>
+            <input name="department" id="department" class="checkoutForm" onfocus="inputFocus(this)" onblur="inputBlur(this)" value="Department" type="text" required/>
+            <input name="email" id="email" class="checkoutForm" onfocus="inputFocus(this)" onblur="inputBlur(this)" value="Email" type="text" required/>
+            <input class="btn checkoutForm" name="submit" type="submit" value="Checkout">
+          </td>
+        </tr>
+	<tr>
+	  <td colspan="5">
+	    <input type="checkbox" required> <i>I understand that payment for these items will be in the form of a payroll deduction.</i>		
+	  </td>
+	</tr>
+      </table>
+    </div>
+    <br>
+  </form><!--
+  <div id="logoDiv" stye="background-color: #fff">
+    <a href="https://www.uas.com/" target="_blank">
+      <img id="logo" src="images/logos/logo_uas_large.png" alt="UAS logo">
+    </a>
+  </div>-->
+  <table id="logoGrid">
+    <!--<tr style="border-width: 0px;">
+      <th colspan="2" class="logo">
+        <a href="https://www.uas.com/" target="_blank">
+          <img id="logo" src="images/logos/logo_uas_large.png" alt="UAS logo" style="width: 600px; height: auto">
+        </a>
+      </th>
+    </tr>-->
+    <tr>
+      <td class="logo">
+        <a href="https://www.rmhc.org/" target="_blank">
+	  <img src="images/logos/logo_rmhc.png" class="logo">
+        </a>
+      </td>
+
+      <td class="logo">
+	<a href="https://donatenow.heart.org/" target="_blank">
+          <img src="images/logos/logo_aha.png" class="logo">
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo">
+        <a href="https://www.philabundance.org/" target="_blank">
+	  <img src="images/logos/logo_pa.png" class="logo">
+        </a>
+      </td>
+
+      <td class="logo">
+        <a href="https://newsite.fssinc.org/" target="_blank">
+	  <img src="images/logos/logo_fss.png" class="logo">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="logo">
+        <a href="http://ww5.komen.org/" target="_blank">
+	  <img src="images/logos/logo_sgk.png" class="logo">
+        </a>
+      </td>
+
+      <td class="logo">
+        <a href="http://paolifirecompany.org/" target="_blank">
+	  <img src="images/logos/logo_pfc.png" class="logo">
+        </a>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
